@@ -1,8 +1,8 @@
-import Logo from "@/components/ui/logo";
+"use client";
+import Logo from "@/app/custom/ui/logo";
 import ThemeToggle from "./theme-toggle";
 import Search from "./search";
-import { Button } from "./button";
-import Link from "next/link";
+import LandingHeaderDropdown from "./landing-header-dropdown";
 
 export default function Header() {
   return (
@@ -17,6 +17,8 @@ export default function Header() {
           <div className="grow">
             <div className="flex items-center">
               <Logo />
+              <LandingHeaderDropdown />
+              <Search />
             </div>
           </div>
 
@@ -24,10 +26,6 @@ export default function Header() {
           <nav className="flex">
             {/* Right side elements links */}
             <ul className="flex grow justify-end flex-wrap items-center">
-              <li className="ml-4">
-                <Search />
-              </li>
-
               {/* Lights switch */}
               <li>
                 <ThemeToggle />

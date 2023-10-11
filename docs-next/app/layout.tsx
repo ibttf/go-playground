@@ -37,7 +37,7 @@ const aspekta = localFont({
 
 export const metadata = {
   title: "Go Playground",
-  description: "The best way to learn Golang is to play with it.",
+  description: "The best way to learn Go is to play with it.",
 };
 
 export default function RootLayout({
@@ -46,20 +46,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body
+        className={`${nycd.variable} ${aspekta.variable} font-aspekta antialiased text-slate-800 font-[350] bg-white dark:bg-slate-900 dark:text-slate-200`}
+      >
         <Theme>
           <AppProvider>
             {/*  Page content */}
-            <main>
-              <section
-                className={`${nycd.variable} ${aspekta.variable} font-aspekta antialiased text-slate-800 font-[350] bg-white dark:bg-slate-900 dark:text-slate-200`}
-              >
-                <div className="flex flex-col min-h-screen overflow-hidden">
-                  {children}
-                </div>
-              </section>
-            </main>
+            {children}
           </AppProvider>
         </Theme>
       </body>

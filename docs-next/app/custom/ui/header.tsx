@@ -1,7 +1,7 @@
-import Logo from "@/components/ui/logo";
+import Logo from "@/app/custom/ui/logo";
 import ThemeToggle from "./theme-toggle";
 import Search from "./search";
-import { Button } from "./button";
+import { Button } from "../../../components/shadcn/button";
 import Link from "next/link";
 
 export default function Header() {

@@ -1,14 +1,12 @@
 ---
 title: "Basics & Fundamentals"
 summary: "This guide will give you everything you need to start using the Docs Marketing API to manage audiences, control automation workflows, sync email activity with your database, and more."
-topic: {
-  name: "Documentation",
-  slug: "documentation"
-}
-next: {
-  name: "Methods and Parameters",
-  slug: "/documentation/methods-and-parameters"   
-}
+topic: { name: "Documentation", slug: "documentation" }
+next:
+  {
+    name: "Methods and Parameters",
+    slug: "/documentation/methods-and-parameters",
+  }
 ---
 
 ## The basics
@@ -27,10 +25,10 @@ You can also use the Docs API to handle data in different ways for different pur
 
 The Marketing API generally follows REST conventions, with some deviations.
 
-* Resources are typically nouns like subscribers or campaigns.
-* Subresources can be multiply nested under resources.
-* Actions are usually represented by HTTP methods.
-* Responses use the generic JSON content type.
+- Resources are typically nouns like subscribers or campaigns.
+- Subresources can be multiply nested under resources.
+- Actions are usually represented by HTTP methods.
+- Responses use the generic JSON content type.
 
 We use the API Specification to describe each endpoint. The API self-description also contains type information to help you error-check your requests.
 
@@ -38,7 +36,12 @@ The root url for the API is `https://dc.api.docs.com/3.0/`. The dc part of the U
 
 There are a few ways to find your data center. It's the first part of the URL you see in the API keys section of your account; if the URL is `https://us6.docs.com/account/api/`, then the data center subdomain is us6. It's also appended to your API key in the form key-dc; if your API key is 0123456789abcdef0123456789abcde-us6, then the data center subdomain is us6. And finally, if you're connecting via OAuth 2, you can find the data center associated with the token via the OAuth Metadata endpoint; for more information, see the OAuth guide.
 
-<Banner type="important">Note: You will see the dc placeholder or an actual data center subdomain in examples throughout this documentation. Either way, make sure to replace it in your code with the data center subdomain for your account, or your request may generate an error.</Banner>
+<Banner type="important">
+  Note: You will see the dc placeholder or an actual data center subdomain in
+  examples throughout this documentation. Either way, make sure to replace it in
+  your code with the data center subdomain for your account, or your request may
+  generate an error.
+</Banner>
 
 ## Connecting to the API
 
@@ -58,9 +61,9 @@ You can either use HTTP Basic Authentication or Bearer Authentication.
 HTTP Basic Authentication:
 
   curl --request GET \
-  
+
   --url 'https://dc.api.docs.com/3.0/' \
-  
+
   --user 'anystring:TOKEN
 ```
 
@@ -80,4 +83,9 @@ The Marketing API has a 120-second timeout on API calls. You may see this type o
 
 Response times are dependent on the complexity of your request and the general load across Docs. Some endpoints in the Marketing API return values that are large and slow to calculate. Once you know what data you need, use the [pagination and partial response](#0) capabilities to request only what is essential to you.
 
-<Banner>Note: You will see the dc placeholder or an actual data center subdomain in examples throughout this documentation. Either way, make sure to replace it in your code with the data center subdomain for your account, or your request may generate an error.</Banner>
+<Banner>
+  Note: You will see the dc placeholder or an actual data center subdomain in
+  examples throughout this documentation. Either way, make sure to replace it in
+  your code with the data center subdomain for your account, or your request may
+  generate an error.
+</Banner>
