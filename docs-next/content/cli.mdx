@@ -1,0 +1,78 @@
+---
+title: "Building a CLI Application with Go"
+summary: "Learn how to build a simple command-line interface (CLI) application using Go, harnessing the power of its standard library and popular packages."
+topic: { name: "Guides / Tutorials", slug: "guides" }
+next: { name: "Creating a Robust Backend:", slug: "/guides/backend" }
+---
+
+## Introduction
+
+Command-Line Interface (CLI) applications provide users with a text-based interface to interact with software. With Go's robust standard library and efficient compilation, it's an excellent choice for building CLI tools.
+
+## Setting Up
+
+Before you begin, ensure you have Go installed. If not, refer to the official [Go Installation Guide](https://golang.org/doc/install).
+
+## Your First CLI Application
+
+We'll start by building a simple "Hello, World!" CLI application.
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+)
+
+func main() {
+    if len(os.Args) < 2 {
+        fmt.Println("Hello, World!")
+    } else {
+        fmt.Printf("Hello, %s!\n", os.Args[1])
+    }
+}
+```
+
+Save this code to a file named hello.go. To run the application, use:
+
+```bash
+$ go run hello.go
+Hello, World!
+
+$ go run hello.go Alice
+Hello, Alice!
+```
+
+### Parsing Command-Line Arguments
+
+While os.Args provides raw command-line arguments, Go offers the flag package for more complex command-line parsing.
+
+```go
+package main
+
+import (
+    "flag"
+    "fmt"
+)
+
+func main() {
+    name := flag.String("name", "World", "Name of the person to greet")
+    flag.Parse()
+
+    fmt.Printf("Hello, %s!\n", *name)
+}
+```
+
+You can now use flags to specify the name:
+
+```bash
+$ go run hello.go --name=Alice
+Hello, Alice!
+```
+
+## Organizing Commands with Cobra
+
+For more sophisticated CLI applications, the <a href="https://github.com/spf13/cobra"> Cobra</a> library is a popular choice. It allows for easy command organization, argument parsing, and provides helpful features like auto-generated help and shell completions.
+
+To get started with Cobra, you'd need to install it and set up a new Cobra CLI application. Follow their <a href="https://github.com/spf13/cobra">official documentation</a> for a comprehensive guide.
