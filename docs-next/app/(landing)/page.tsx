@@ -1,6 +1,6 @@
-import LandingHeader from "@/app/custom/ui/landing-header";
-import { LandingHero } from "@/app/custom/ui/landing-hero";
-import { LandingNavbar } from "@/app/custom/ui/landing-navbar";
+import LandingHeader from "@/components/ui/landing-header";
+import { LandingHero } from "@/components/ui/landing-hero";
+import { LandingNavbar } from "@/components/ui/landing-navbar";
 
 export default function page() {
   return (

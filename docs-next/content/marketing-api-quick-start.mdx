@@ -1,14 +1,8 @@
 ---
-title: "Marketing API Quick Start"
-summary: "This guide will give you everything you need to start using the Docs Marketing API to manage audiences, control automation workflows, sync email activity with your database, and more."
-topic: {
-  name: "Guides / Tutorials",
-  slug: "guides"
-}
-next: {
-  name: "Create an account",
-  slug: "/guides/create-an-account"   
-}
+title: "Guides and Tutorials"
+summary: "Explore a curated collection of in-depth guides and tutorials to boost your Go development skills, from building CLI applications to creating robust backends with Go."
+topic: { name: "Guides / Tutorials", slug: "guides" }
+next: { name: "Building a CLI Application", slug: "/guides/create-an-account" }
 ---
 
 ## At a glance
@@ -19,8 +13,8 @@ We'll walk through generating your API key, installing the client library for yo
 
 The simplest way to authenticate a request to the Marketing API is using an [API key](#0).
 
-* Navigate to the API Keys section of your Docs account.
-* If you already have an API key listed to use for your application, simply copy it.
+- Navigate to the API Keys section of your Docs account.
+- If you already have an API key listed to use for your application, simply copy it.
 
 Let's see an example:
 
@@ -31,7 +25,8 @@ Let's see an example:
   thumbAlt="Modal video thumbnail"
   video="/videos/video.mp4"
   videoWidth={1920}
-  videoHeight={1080} />
+  videoHeight={1080}
+/>
 
 If you're creating integrations that require access to Mailchimp on behalf of other Docs users, you'll want to [set up authentication via Oauth 2](#0) instead.
 
@@ -64,7 +59,7 @@ apikey="YOUR_API_KEY"
 curl -sS \
 
   "https://${dc}.api.docs.com/3.0/ping" \
-  
+
   --user "anystring:${apikey}" | jq -r
 ```
 
@@ -83,19 +78,27 @@ There are a number of configuration status which are explained in detail in this
   </THead>
   <TBody>
     <TbRow>
-      <Td><Tag color="teal">Subscribed</Tag></Td>
+      <Td>
+        <Tag color="teal">Subscribed</Tag>
+      </Td>
       <Td>The contact is subscribed to the list and can receive campaigns.</Td>
     </TbRow>
     <TbRow>
-      <Td><Tag color="rose">Unsubscribed</Tag></Td>
+      <Td>
+        <Tag color="rose">Unsubscribed</Tag>
+      </Td>
       <Td>The contact is no longer subscribed to the list.</Td>
     </TbRow>
     <TbRow>
-      <Td><Tag color="purple">Cleaned</Tag></Td>
+      <Td>
+        <Tag color="purple">Cleaned</Tag>
+      </Td>
       <Td>The contact bounced and was removed from the list.</Td>
     </TbRow>
     <TbRow>
-      <Td><Tag>Pending</Tag></Td>
+      <Td>
+        <Tag>Pending</Tag>
+      </Td>
       <Td>The contact has not yet confirmed their subscription.</Td>
     </TbRow>
   </TBody>

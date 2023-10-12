@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Mdx } from "@/components/mdx/mdx";
-import TopicTitle from "@/app/custom/ui/topic-title";
-import Hamburger from "@/app/custom/ui/hamburger";
-import Feedback from "@/app/custom/ui/feedback";
-import PageNavigation from "@/app/custom/ui/page-navigation";
-import Footer from "@/app/custom/ui/footer";
-import SecondaryNav from "@/app/custom/ui/secondary-nav";
+import TopicTitle from "@/components/ui/topic-title";
+import Hamburger from "@/components/ui/hamburger";
+import Feedback from "@/components/ui/feedback";
+import PageNavigation from "@/components/ui/page-navigation";
+import Footer from "@/components/ui/footer";
+import SecondaryNav from "@/components/ui/secondary-nav";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
