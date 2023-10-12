@@ -278,7 +278,7 @@ export default function SupportSidebar() {
                             </li>
                             <li className="mt-3">
                               <SidebarLink href="/guides/database">
-                                Connecting to a Database in Go
+                                Connecting to a Database
                               </SidebarLink>
                             </li>
                             <li className="mt-3">

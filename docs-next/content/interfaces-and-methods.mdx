@@ -1,6 +1,6 @@
 ---
 title: "Interfaces and Methods"
-summary: ""Explore the world of Go's methods and interfaces. Understand how methods work on types, the pivotal role of interfaces, and delve into some of the standard library interfaces that Go offers."
+summary: "Explore the world of Go's methods and interfaces. Understand how methods work on types, the pivotal role of interfaces, and delve into some of the standard library interfaces that Go offers."
 topic: { name: "Basics", slug: "basics" }
 next: { name: "Concurrency in Go", slug: "/basics/concurrency" }
 ---
@@ -118,7 +118,7 @@ Go's standard library comes with many predefined interfaces that help in designi
 
 The io.Reader and io.Writer interfaces are fundamental interfaces for reading from and writing to streams in Go.
 
-````go
+```go
 func ReadFrom(r io.Reader, buffer []byte) {
     _, err := r.Read(buffer)
     // Handle err
@@ -129,6 +129,7 @@ func WriteTo(w io.Writer, data []byte) {
     // Handle err
 }
 ```
+
 ### The Stringer Interface
 
 The Stringer interface provides a method to return the string representation of a type.
@@ -137,7 +138,7 @@ The Stringer interface provides a method to return the string representation of 
 type Stringer interface {
     String() string
 }
-````
+```
 
 <Banner type="important">
   Note: Mastering interfaces and methods in Go is crucial as they lay the
