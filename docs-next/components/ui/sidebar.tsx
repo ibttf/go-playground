@@ -252,8 +252,8 @@ export default function SupportSidebar() {
                             }`}
                           >
                             <li className="mt-3">
-                              <SidebarLink href="/guides/guides-and-tutorials">
-                                Guides and Tutorials
+                              <SidebarLink href="/guides/marketing-api-quick-start">
+                                Marketing API Quick Start
                               </SidebarLink>
                             </li>
                             <li className="mt-3">
