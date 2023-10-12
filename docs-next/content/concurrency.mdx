@@ -1,7 +1,8 @@
 ---
-title: "Concurrency in Go"
+title: "Concurrency"
 summary: "Delve deep into Go's powerful concurrency model, exploring goroutines, channels, and advanced patterns for concurrent programming."
-topic: { name: "concurrency", slug: "basics" }
+topic: { name: "Basics", slug: "basics" }
+next: { name: "Guides and Tutorials", slug: "/guides/guides-tutorials" }
 ---
 
 ## Goroutines
@@ -18,7 +19,7 @@ To launch a new goroutine, simply use the **go** keyword:
 go functionName()
 ```
 
-### Synchronization using sync.WaitGroup
+### Synchronization using **sync.WaitGroup**
 
 While goroutines are powerful, it's essential to manage their execution. The **sync.WaitGroup** type provides a way to wait for groups of goroutines to finish executing:
 
@@ -47,7 +48,7 @@ ch := make(chan int)
 
 ### Sending and receiving from channels
 
-You can send and receive values from channels using the <- operator:
+You can send and receive values from channels using the **\<-** operator:
 
 ```go
 ch <- 1  // send

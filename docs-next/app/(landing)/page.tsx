@@ -1,12 +1,10 @@
-import LandingHeader from "@/app/custom/ui/landing-header";
-import { LandingHero } from "@/app/custom/ui/landing-hero";
-import { LandingNavbar } from "@/app/custom/ui/landing-navbar";
+import LandingHeader from "@/components/ui/landing-header";
+import { LandingHero } from "@/components/ui/landing-hero";
 
 export default function page() {
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       <LandingHeader />
-      <LandingNavbar />
       <LandingHero />
     </div>
   );

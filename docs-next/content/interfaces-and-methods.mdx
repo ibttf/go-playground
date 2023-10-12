@@ -1,7 +1,8 @@
 ---
-title: "Concurrency in Go"
-summary: "Explore the world of Go's methods and interfaces. Understand how methods work on types, the pivotal role of interfaces, and delve into some of the standard library interfaces that Go offers."
-topic: { name: "interfaces-methods", slug: "basics" }
+title: "Interfaces and Methods"
+summary: ""Explore the world of Go's methods and interfaces. Understand how methods work on types, the pivotal role of interfaces, and delve into some of the standard library interfaces that Go offers."
+topic: { name: "Basics", slug: "basics" }
+next: { name: "Concurrency in Go", slug: "/basics/concurrency" }
 ---
 
 ## Methods
@@ -24,7 +25,7 @@ func (c Circle) Area() float64 {
 
 ### Pointer Receivers vs. Value Receivers
 
-While value receivers get a copy of the type they're invoked upon, pointer receivers get a reference, allowing them to modify the original value
+While value receivers get a copy of the type they're invoked upon, pointer receivers get a reference, allowing them to modify the original value.
 
 ```go
 func (c *Circle) DoubleRadius() {
@@ -68,6 +69,34 @@ func (p Person) Speak() string {
 The empty interface (interface{}) can hold values of any type, offering a way to handle unknown or dynamic types.
 
 ```go
+name := person.FirstName // John
+```
+
+## Interfaces
+
+Interfaces in Go define a set of method signatures. They provide a way to specify the behavior of an object.
+
+### Defining and Implementing Interfaces
+
+```go
+type Speaker interface {
+    Speak() string
+}
+
+type Person struct {
+    Name string
+}
+
+func (p Person) Speak() string {
+    return "Hello, my name is " + p.Name
+}
+```
+
+### Empty Interfaces and Type Assertions
+
+The empty interface (interface{}) can hold values of any type, offering a way to handle unknown or dynamic types.
+
+```go
 func Describe(i interface{}) {
     fmt.Printf("(%v, %T)\n", i, i)
 }
@@ -87,7 +116,9 @@ Go's standard library comes with many predefined interfaces that help in designi
 
 ### io.Reader and io.Writer
 
-```go
+The io.Reader and io.Writer interfaces are fundamental interfaces for reading from and writing to streams in Go.
+
+````go
 func ReadFrom(r io.Reader, buffer []byte) {
     _, err := r.Read(buffer)
     // Handle err
@@ -98,7 +129,6 @@ func WriteTo(w io.Writer, data []byte) {
     // Handle err
 }
 ```
-
 ### The Stringer Interface
 
 The Stringer interface provides a method to return the string representation of a type.
@@ -107,9 +137,7 @@ The Stringer interface provides a method to return the string representation of 
 type Stringer interface {
     String() string
 }
-```
-
-Many Go functions, like fmt.Println(), use the Stringer interface implicitly, allowing types to define their printable representations.
+````
 
 <Banner type="important">
   Note: Mastering interfaces and methods in Go is crucial as they lay the

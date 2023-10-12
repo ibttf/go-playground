@@ -2,8 +2,8 @@ import "../css/style.css";
 
 import Image from "next/image";
 import Illustration from "@/public/images/hero-illustration.svg";
-import Sidebar from "@/app/custom/ui/sidebar";
-import Header from "@/app/custom/ui/header";
+import Sidebar from "@/components/ui/sidebar";
+import Header from "@/components/ui/header";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

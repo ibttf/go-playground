@@ -1,0 +1,162 @@
+---
+title: "Connecting to a Database with Go"
+summary: "Dive deep into the world of databases with Go. Learn how to connect, perform CRUD operations, and utilize Go's ORM tools for a seamless database experience."
+topic: { name: "Guides / Tutorials", slug: "guides" }
+next: { name: "Building a Microservice:", slug: "/guides/microservice" }
+---
+
+## Introduction
+
+Whether you're building a simple application or an enterprise-level system, database interactions are crucial. Go, with its extensive libraries and packages, offers robust tools for database connections and operations.
+
+## Pre-requisites
+
+Before diving in, ensure you have:
+
+- A Go environment set up.
+- A running database instance (for this tutorial, we'll use PostgreSQL).
+- Installed the database driver (like `pq` for PostgreSQL).
+
+## Connecting to the Database
+
+First, let's establish a connection to our PostgreSQL database:
+
+```go
+package main
+
+import (
+    "database/sql"
+    _ "github.com/lib/pq"
+    "log"
+)
+
+const (
+    host     = "localhost"
+    port     = 5432
+    user     = "username"
+    password = "password"
+    dbname   = "mydb"
+)
+
+func main() {
+    connStr := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+        host, port, user, password, dbname)
+
+    db, err := sql.Open("postgres", connStr)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer db.Close()
+
+    log.Println("Successfully connected!")
+}
+```
+
+## Basic CRUD Operations
+
+### Create
+
+Insert a new record into our hypothetical users table:
+
+```go
+_, err = db.Exec("INSERT INTO users (name, age) VALUES ($1, $2)", "John", 25)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+### Read
+
+Retrieve a user by ID:
+
+```go
+var name string
+var age int
+err = db.QueryRow("SELECT name, age FROM users WHERE id = $1", 1).Scan(&name, &age)
+if err != nil {
+    log.Fatal(err)
+}
+log.Printf("Name: %s, Age: %d\n", name, age)
+```
+
+### Update
+
+Modify an existing user's name:
+
+```go
+_, err = db.Exec("UPDATE users SET name = $1 WHERE id = $2", "Doe", 1)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+### Delete
+
+Remove a user:
+
+```go
+_, err = db.Exec("DELETE FROM users WHERE id = $1", 1)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## Go's ORM: GORM
+
+While the standard **'database/sql'** package is powerful, ORMs like GORM can simplify database operations even further.
+
+First, install GORM and its PostgreSQL driver:
+
+```bash
+go get -u gorm.io/gorm
+go get -u gorm.io/driver/postgres
+```
+
+## Define a module
+
+```go
+type User struct {
+    ID   uint   `gorm:"primaryKey"`
+    Name string
+    Age  int
+}
+```
+
+### Connect using GORM
+
+```go
+import (
+    "gorm.io/gorm"
+    "gorm.io/driver/postgres"
+)
+
+db, err := gorm.Open(postgres.Open(connStr), &gorm.Config{})
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## CRUD With GORM
+
+GORM simplifies CRUD operations:
+
+```go
+// Create
+db.Create(&User{Name: "Jane", Age: 30})
+
+// Read
+var user User
+db.First(&user, 1)
+
+// Update
+db.Model(&user).Update("Name", "Smith")
+
+// Delete
+db.Delete(&user)
+```
+
+<Banner>
+  Note: Database interactions can be complex, especially as the scale grows.
+  Regularly consult Go's official documentation, best practices, and relevant
+  database documentation to ensure robustness and security.
+</Banner>

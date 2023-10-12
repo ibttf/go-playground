@@ -16,7 +16,7 @@ export default function LandingHeaderDropdown() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/documentation/foundations" legacyBehavior passHref>
+          <Link href="/basics/why-go" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Learn
             </NavigationMenuLink>

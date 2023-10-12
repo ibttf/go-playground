@@ -148,6 +148,16 @@ export default function SupportSidebar() {
                                 className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
                                 href="#0"
                               >
+                                <SidebarLink href="/basics/interfaces-and-methods">
+                                  Interfaces and Methods
+                                </SidebarLink>
+                              </a>
+                            </li>
+                            <li className="mt-3">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
                                 <SidebarLink href="/basics/concurrency">
                                   Concurrency
                                 </SidebarLink>
@@ -252,41 +262,34 @@ export default function SupportSidebar() {
                             }`}
                           >
                             <li className="mt-3">
-                              <SidebarLink href="/guides/marketing-api-quick-start">
-                                Marketing API Quick Start
+                              <SidebarLink href="/guides/guides-and-tutorials">
+                                Home
                               </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Create an account
-                              </a>
+                              <SidebarLink href="/guides/cli">
+                                Building a CLI Application
+                              </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Generate your API key
-                              </a>
+                              <SidebarLink href="/guides/backend">
+                                Building a Backend
+                              </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Make your first API call
-                              </a>
+                              <SidebarLink href="/guides/database">
+                                Connecting to a Database in Go
+                              </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Next steps
-                              </a>
+                              <SidebarLink href="/guides/microservices">
+                                Building a Microservice
+                              </SidebarLink>
+                            </li>
+                            <li className="mt-3">
+                              <SidebarLink href="/guides/best-practices">
+                                Optimizing Go Code
+                              </SidebarLink>
                             </li>
                           </ul>
                         </>
