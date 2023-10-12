@@ -7,7 +7,7 @@ export default function TopicTitle({
 }) {
   return (
     <>
-      {segment === "documentation" && (
+      {segment === "basics" && (
         <>
           <svg
             width="64"

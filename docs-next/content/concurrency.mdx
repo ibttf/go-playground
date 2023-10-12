@@ -1,0 +1,121 @@
+---
+title: "Concurrency in Go"
+summary: "Delve deep into Go's powerful concurrency model, exploring goroutines, channels, and advanced patterns for concurrent programming."
+topic: { name: "concurrency", slug: "basics" }
+---
+
+## Goroutines
+
+Concurrency in Go is handled with goroutines – lightweight, concurrent function executions. They allow multiple tasks to be processed in parallel or concurrently.
+
+### What are goroutines? How do they differ from threads?
+
+Goroutines are similar to threads, but they are more lightweight and managed by the Go runtime rather than the operating system. This design enables Go developers to spawn thousands of goroutines without the overhead commonly associated with threads.
+
+To launch a new goroutine, simply use the **go** keyword:
+
+```go
+go functionName()
+```
+
+### Synchronization using sync.WaitGroup
+
+While goroutines are powerful, it's essential to manage their execution. The **sync.WaitGroup** type provides a way to wait for groups of goroutines to finish executing:
+
+```go
+var wg sync.WaitGroup
+
+wg.Add(1)
+go func() {
+    // Do work
+    wg.Done()
+}()
+wg.Wait()
+```
+
+## Channels
+
+Channels provide a way for goroutines to communicate with each other and synchronize their execution.
+
+### Introduction to channels: make(chan T)
+
+Channels are typed conduits through which you can send and receive values. To create a channel:
+
+```go
+ch := make(chan int)
+```
+
+### Sending and receiving from channels
+
+You can send and receive values from channels using the <- operator:
+
+```go
+ch <- 1  // send
+value := <-ch  // receive
+```
+
+### Buffered channels
+
+Go supports buffered channels. When you create a buffered channel, you specify its capacity:
+
+```go
+ch := make(chan int, 2)  // capacity of 2
+```
+
+### Closing channels and range on channels
+
+It's good practice to close channels when they're no longer needed. This can be done using the close() function. The range keyword can be used to read values from a channel until it's closed:
+
+```go
+for v := range ch {
+    fmt.Println(v)
+}
+```
+
+## Select Statement
+
+The select statement provides another way to handle multiple channels.
+
+### Waiting on multiple channel operations
+
+Using select, you can wait on multiple channel operations, blocking until one of the channels can proceed:
+
+```go
+select {
+case msg1 := <-ch1:
+    fmt.Println("Received", msg1)
+case msg2 := <-ch2:
+    fmt.Println("Received", msg2)
+case ch3 <- 3:
+    fmt.Println("Sent 3 to ch3")
+default:
+    fmt.Println("No communication")
+}
+```
+
+### Default select case
+
+The **default** case in a **select** is run if no other case is ready.
+
+## Advanced Concurrency Patterns
+
+Go's concurrency primitives allow for the design of intricate concurrent patterns.
+
+### Worker pools
+
+Worker pools allow you to start a fixed number of worker goroutines to handle tasks in parallel.
+
+### Fan-in, Fan-out
+
+Fan-out is the practice of starting multiple goroutines to handle incoming requests, and fan-in is the practice of combining multiple results into one channel.
+
+### Timer and Ticker
+
+Go's **time** package provides **Timer** and **Ticker** for executing code after a set duration and at regular intervals, respectively.
+
+<Banner>
+  Note: Concurrency in Go is a vast topic, and understanding the intricacies of
+  goroutines, channels, and patterns can significantly enhance your Go
+  applications' efficiency. Always refer to Go's official documentation for
+  detailed explanations and best practices.
+</Banner>

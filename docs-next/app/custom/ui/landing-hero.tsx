@@ -19,7 +19,7 @@ export const LandingHero = () => {
         </div>
       </div>
       <div>
-        <Link href="documentation/fundamentals">
+        <Link href="basics/why-go">
           <Button
             variant="go"
             className="md:text-lg p-4 md:p-6 rounded-full font-semibold"

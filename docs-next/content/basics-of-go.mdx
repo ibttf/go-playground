@@ -1,0 +1,162 @@
+---
+title: "Basics of Go"
+summary: "Dive into the foundational concepts of Go including variables, control structures, functions, and understanding packages."
+topic: { name: "basics-of-go", slug: "basics" }
+next: { name: "Advanced Go Features", slug: "/basics/advanced-go-features" }
+---
+
+## Variables and Types
+
+In Go, variables store data for processing. The type of a variable determines the kind of data it can hold.
+
+### Declaring Variables
+
+**var**: The standard way to declare a variable.
+
+```go
+# Writing Programs in Go
+
+var name string
+name = "GoLang"
+```
+
+Shorthand: Quick variable declaration and initialization.
+
+```go
+name := "GoLang"
+```
+
+Zero Values: By default, variables declared without an explicit initial value are given their zero value (e.g., 0 for numeric types, false for booleans, and "" for strings).
+
+## Basic Types
+
+- **int** & **float64**: Numeric types representing whole numbers and floating-point numbers respectively.
+- **bool**: Represents a boolean and can be either **true** or **false**.
+- **string**: Represents a sequence of characters.
+
+### Constants and iota
+
+Constants are immutable values. The keyword **const** is used for their declaration. **iota** is a unique feature in Go that represents successive integer constants, commonly used to create enumerated constants.
+
+## Control Structures
+
+Go offers standard control structures familiar to developers from other programming languages.
+
+### Conditional Statements
+
+**if, else**: Used for conditional execution.
+
+```go
+if condition {
+    // do something
+} else {
+    // do something else
+}
+```
+
+**switch**: A multi-way branch statement.
+
+```go
+switch value {
+case v1:
+    // do something
+case v2:
+    // do something else
+default:
+    // default action
+}
+```
+
+### Loops
+
+**for**: The only looping construct in Go.
+
+```go
+for initialization; condition; post {
+    // loop body
+
+}
+```
+
+**range**: Iterates over elements in a variety of data structures.
+
+```go
+for index, value := range collection {
+    // do something with index and value
+
+}
+```
+
+## Functions
+
+Functions are blocks of code that perform specific tasks. In Go, functions can return multiple values, making error handling elegant and straightforward.
+
+### Declaring and Calling Functions
+
+**for**: The only looping construct in Go.
+
+```go
+func functionName(parameters) returnType {
+    // function body
+}
+```
+
+### Multiple Return Values
+
+Functions in Go can return multiple values, often used to return both a result and an error.
+
+```go
+func returnMultiple() (int, string) {
+    return 42, "Answer"
+}
+```
+
+### Anonymous Functions and Closures
+
+Functions can be defined without a name and can access variables outside their body.
+
+```go
+func() {
+    fmt.Println("I'm an anonymous function!")
+}()
+```
+
+### Variadic Functions
+
+These accept a variable number of arguments. The ... syntax is used in the function declaration.
+
+```go
+func sum(values ...int) int {
+    total := 0
+    for _, value := range values {
+        total += value
+    }
+    return total
+}
+```
+
+## Packages and Imports
+
+Go organizes code into packages to avoid naming collisions and to group related code together.
+
+### Understanding Go Packages
+
+A package in Go is a collection of source files in the same directory. The package name is the same as the last element of the import path.
+
+### Importing Standard Library Packages
+
+To use code from another package, it needs to be imported. The Go standard library provides a plethora of utility packages.
+
+```go
+import ('fmt')
+```
+
+### Creating Your Custom Package
+
+For larger programs, you can organize your code into custom packages. This aids in code organization, reusability, and separation of concerns.
+
+<Banner type="important">
+  Note: Grasping the basics of Go is crucial before diving into its advanced
+  features. Ensure you're comfortable with these foundational concepts, practice
+  regularly, and refer to the Go documentation whenever in doubt.
+</Banner>

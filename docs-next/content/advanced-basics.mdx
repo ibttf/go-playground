@@ -1,0 +1,114 @@
+---
+title: "Advanced Basics"
+summary: "Venture further into the depths of Go, exploring the advanced basics such as pointers, structs, interfaces, and error handling."
+topic: { name: "advanced-basics", slug: "basics" }
+next: { name: "Advanced Basics", slug: "/basics/advanced-basics" }
+---
+
+## Pointers
+
+In Go, pointers provide a way to directly access memory locations and work with references to data.
+
+### Understanding Pointers
+
+A pointer references a location in memory. It offers a level of indirection, enabling you to operate on the underlying data.
+
+```go
+var x int = 10
+var y *int = &x
+```
+
+### Dereferencing Pointers
+
+Use the **\*** operator to access the value at the referenced memory location.
+
+```go
+fmt.Println(*y) // Outputs: 10
+```
+
+### Pointer Arithmetic
+
+Unlike some other languages, Go doesn't support direct pointer arithmetic for safety reasons. Instead, you'll use slices and arrays for such operations.
+
+## Structs
+
+Structs are composite data types that group together zero or more fields, each of varying types.
+
+### Defining and Using Structs
+
+```go
+type Person struct {
+    FirstName string
+    LastName  string
+    Age       int
+}
+
+person := Person{"John", "Doe", 30}
+```
+
+### Accessing Struct Fields
+
+You can access individual fields using the dot notation.
+
+```go
+name := person.FirstName // John
+```
+
+## Interfaces
+
+Interfaces in Go define a set of method signatures. They provide a way to specify the behavior of an object.
+###Defining and Implementing Interfaces
+
+```go
+type Writer interface {
+    Write([]byte) (int, error)
+}
+
+type MyWriter struct{}
+
+func (mw MyWriter) Write(data []byte) (int, error) {
+    // Implementation here
+    return len(data), nil
+}
+```
+
+### Interface Satisfaction
+
+A type satisfies an interface if it implements all the methods the interface requires.
+
+## Error Handling
+
+Go handles errors as values, leading to an explicit and straightforward approach to error management.
+
+### The error Type
+
+The built-in **error** type is at the heart of error handling in Go.
+
+```go
+func divide(a, b float64) (float64, error) {
+    if b == 0.0 {
+        return 0.0, errors.New("cannot divide by zero")
+    }
+    return a / b, nil
+}
+```
+
+### Custom Errors
+
+You can define your custom error types, allowing for richer error information.
+
+```go
+type MyError struct {
+    Reason string
+}
+
+func (me MyError) Error() string {
+    return me.Reason
+}
+```
+
+<Banner type="important">
+  Note: As you dive deeper into Go's advanced basics, it's crucial to understand
+  the intricacies of these topics. Ensure you're hands-on with these concepts
+  and make it a point to work on small projects to solidify your grasp.
+</Banner>

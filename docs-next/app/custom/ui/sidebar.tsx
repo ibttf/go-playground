@@ -1,39 +1,39 @@
-'use client'
+"use client";
 
-import { useRef, useEffect } from 'react'
-import { useAppProvider } from '@/app/app-provider'
-import { useSelectedLayoutSegments } from 'next/navigation'
-import { Transition } from '@headlessui/react'
-import Link from 'next/link'
-import SidebarLink from './sidebar-link'
-import SidebarLinkGroup from './sidebar-link-group'
-import SidebarLinkSubgroup from './sidebar-link-subgroup'
+import { useRef, useEffect } from "react";
+import { useAppProvider } from "@/app/app-provider";
+import { useSelectedLayoutSegments } from "next/navigation";
+import { Transition } from "@headlessui/react";
+import Link from "next/link";
+import SidebarLink from "./sidebar-link";
+import SidebarLinkGroup from "./sidebar-link-group";
+import SidebarLinkSubgroup from "./sidebar-link-subgroup";
 
 export default function SupportSidebar() {
-  const sidebar = useRef<HTMLDivElement>(null)
-  const { sidebarOpen, setSidebarOpen } = useAppProvider()
-  const segments = useSelectedLayoutSegments()
+  const sidebar = useRef<HTMLDivElement>(null);
+  const { sidebarOpen, setSidebarOpen } = useAppProvider();
+  const segments = useSelectedLayoutSegments();
 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: EventTarget | null }): void => {
       if (!sidebar.current) return;
-      if (!sidebarOpen || sidebar.current.contains(target as Node)) return
-      setSidebarOpen(false)
-    }
-    document.addEventListener('click', clickHandler)
-    return () => document.removeEventListener('click', clickHandler)
-  })
+      if (!sidebarOpen || sidebar.current.contains(target as Node)) return;
+      setSidebarOpen(false);
+    };
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
+  });
 
   // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }: { keyCode: number }): void => {
-      if (!sidebarOpen || keyCode !== 27) return
-      setSidebarOpen(false)
-    }
-    document.addEventListener('keydown', keyHandler)
-    return () => document.removeEventListener('keydown', keyHandler)
-  })  
+      if (!sidebarOpen || keyCode !== 27) return;
+      setSidebarOpen(false);
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => document.removeEventListener("keydown", keyHandler);
+  });
 
   return (
     <>
@@ -77,20 +77,27 @@ export default function SupportSidebar() {
               <nav className="md:block">
                 <ul className="text-sm">
                   {/* 1st level */}
-                  <SidebarLinkGroup open={segments.includes('documentation')}>
+                  <SidebarLinkGroup open={segments.includes("basics")}>
                     {(handleClick, open) => {
                       return (
                         <>
                           <a
                             href="#0"
-                            className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!segments.includes('documentation') && 'before:hidden'
-                              }`}
+                            className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${
+                              !segments.includes("basics") && "before:hidden"
+                            }`}
                             onClick={(e) => {
                               e.preventDefault();
                               handleClick();
                             }}
                           >
-                            <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg
+                              className="mr-3 shrink-0"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
                               <path
                                 className="fill-blue-400"
                                 d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
@@ -104,83 +111,126 @@ export default function SupportSidebar() {
                                 d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
                               />
                             </svg>
-                            <span>Documentation</span>
+                            <span>Basics</span>
                           </a>
-                          <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
+                          <ul
+                            className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${
+                              !open && "hidden"
+                            }`}
+                          >
                             <li className="mt-3">
-                              <SidebarLink href="/documentation/fundamentals">
-                                Fundamentals
+                              <SidebarLink href="/basics/why-go">
+                                Why Go?
                               </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
-                                Methods and Parameters
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
+                                <SidebarLink href="/basics/basics-of-go">
+                                  Basics Of Go
+                                </SidebarLink>
                               </a>
                             </li>
                             <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
-                                Merge Fields
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
+                                <SidebarLink href="/basics/advanced-basics">
+                                  Advanced Basics
+                                </SidebarLink>
                               </a>
                             </li>
-                            <SidebarLinkSubgroup title="Alternative Schemas" open={segments.includes('alternative-scheme')}>
+                            <li className="mt-3">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
+                                <SidebarLink href="/basics/concurrency">
+                                  Concurrency
+                                </SidebarLink>
+                              </a>
+                            </li>
+
+                            {/* <li className="mt-3">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
+                                Merge Fields
+                              </a>
+                            </li> */}
+                            {/* <SidebarLinkSubgroup
+                              title="Alternative Schemas"
+                              open={segments.includes("alternative-scheme")}
+                            >
                               <li className="mt-3">
-                                <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                                <a
+                                  className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                  href="#0"
+                                >
                                   File system
                                 </a>
                               </li>
                               <li className="mt-3">
-                                <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                                <a
+                                  className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                  href="#0"
+                                >
                                   Describing responses
                                 </a>
                               </li>
                             </SidebarLinkSubgroup>
-                            <SidebarLinkSubgroup title="E-Commerce" open={segments.includes('ecommerce')}>
+                            <SidebarLinkSubgroup
+                              title="E-Commerce"
+                              open={segments.includes("ecommerce")}
+                            >
                               <li className="mt-3">
-                                <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                                <a
+                                  className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                  href="#0"
+                                >
                                   Path parameters
                                 </a>
                               </li>
                               <li className="mt-3">
-                                <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                                <a
+                                  className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                  href="#0"
+                                >
                                   Query string parameters
                                 </a>
                               </li>
-                            </SidebarLinkSubgroup>
-                            <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
-                                Account Exports
-                              </a>
-                            </li>
-                            <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
-                                Integrations
-                              </a>
-                            </li>
-                            <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
-                                Add a contact
-                              </a>
-                            </li>
+                            </SidebarLinkSubgroup> */}
                           </ul>
                         </>
-                      )
+                      );
                     }}
                   </SidebarLinkGroup>
                   {/* 1st level */}
-                  <SidebarLinkGroup open={segments.includes('guides')}>
+                  <SidebarLinkGroup open={segments.includes("guides")}>
                     {(handleClick, open) => {
                       return (
                         <>
                           <a
                             href="#0"
-                            className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!segments.includes('guides') && 'before:hidden'
-                              }`}
+                            className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${
+                              !segments.includes("guides") && "before:hidden"
+                            }`}
                             onClick={(e) => {
                               e.preventDefault();
                               handleClick();
                             }}
                           >
-                            <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg
+                              className="mr-3 shrink-0"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
                               <path
                                 className="fill-purple-400"
                                 d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
@@ -196,45 +246,69 @@ export default function SupportSidebar() {
                             </svg>
                             <span>Guides / Tutorials</span>
                           </a>
-                          <ul className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${!open && 'hidden'}`}>
+                          <ul
+                            className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${
+                              !open && "hidden"
+                            }`}
+                          >
                             <li className="mt-3">
                               <SidebarLink href="/guides/marketing-api-quick-start">
                                 Marketing API Quick Start
                               </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
                                 Create an account
                               </a>
                             </li>
                             <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
                                 Generate your API key
                               </a>
                             </li>
                             <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
                                 Make your first API call
                               </a>
                             </li>
                             <li className="mt-3">
-                              <a className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200" href="#0">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
                                 Next steps
                               </a>
-                            </li>                            
+                            </li>
                           </ul>
                         </>
-                      )
+                      );
                     }}
                   </SidebarLinkGroup>
                   {/* 1st level */}
                   <li className="mb-1">
                     <Link
                       href="/help/how-can-we-help"
-                      className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${!segments.includes('help') && 'before:hidden'}`}
+                      className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${
+                        !segments.includes("help") && "before:hidden"
+                      }`}
                       onClick={() => setSidebarOpen(false)}
                     >
-                      <svg className="mr-3 shrink-0" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg
+                        className="mr-3 shrink-0"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
                           className="fill-sky-400"
                           d="M19.888 7.804a.88.88 0 0 0-.314-.328l-7.11-4.346a.889.889 0 0 0-.927 0L4.426 7.476a.88.88 0 0 0-.314.328L12 12.624l7.888-4.82Z"
@@ -250,13 +324,13 @@ export default function SupportSidebar() {
                       </svg>
                       <span>Help / Support</span>
                     </Link>
-                  </li>                  
+                  </li>
                 </ul>
               </nav>
             </div>
           </div>
         </Transition>
-      </div>           
+      </div>
     </>
-  )
+  );
 }

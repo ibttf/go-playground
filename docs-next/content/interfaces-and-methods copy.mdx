@@ -1,0 +1,118 @@
+---
+title: "Concurrency in Go"
+summary: "Explore the world of Go's methods and interfaces. Understand how methods work on types, the pivotal role of interfaces, and delve into some of the standard library interfaces that Go offers."
+topic: { name: "interfaces-methods", slug: "basics" }
+---
+
+## Methods
+
+In Go, methods are functions attached to a specific type. They allow types to exhibit behavior.
+
+### Defining Methods on Types
+
+Methods can be defined on both built-in and custom types.
+
+```go
+type Circle struct {
+    Radius float64
+}
+
+func (c Circle) Area() float64 {
+    return math.Pi * c.Radius * c.Radius
+}
+```
+
+### Pointer Receivers vs. Value Receivers
+
+While value receivers get a copy of the type they're invoked upon, pointer receivers get a reference, allowing them to modify the original value
+
+```go
+func (c *Circle) DoubleRadius() {
+    c.Radius = c.Radius * 2
+}
+```
+
+<Banner type="tip">
+  Tip: Use pointer receivers when you need to modify the receiver value or when
+  the struct is large to avoid copying costs.
+</Banner>
+
+## Interfaces
+
+Interfaces abstract behavior and provide a way to express the capabilities of a type without dictating its implementation.
+
+### What are Interfaces? Why are They Crucial in Go?
+
+Interfaces allow types to be treated based on what they can do rather than what they are. They encourage a design that promotes decoupling and cleaner architecture.
+
+### Defining and Implementing Interfaces
+
+An interface defines a set of method signatures. If a type provides definitions for all methods in the interface, it implicitly satisfies the interface.
+
+```go
+type Speaker interface {
+    Speak() string
+}
+
+type Person struct {
+    Name string
+}
+
+func (p Person) Speak() string {
+    return "Hello, my name is " + p.Name
+}
+```
+
+### Empty Interfaces and Type Assertions
+
+The empty interface (interface{}) can hold values of any type, offering a way to handle unknown or dynamic types.
+
+```go
+func Describe(i interface{}) {
+    fmt.Printf("(%v, %T)\n", i, i)
+}
+
+// Type assertion
+value, ok := i.(string)
+```
+
+<Banner type="tip">
+  Tip: Use empty interfaces judiciously. Overuse can lead to code that's hard to
+  understand and maintain.
+</Banner>
+
+## Standard Library Interfaces
+
+Go's standard library comes with many predefined interfaces that help in designing consistent and reusable code.
+
+### io.Reader and io.Writer
+
+```go
+func ReadFrom(r io.Reader, buffer []byte) {
+    _, err := r.Read(buffer)
+    // Handle err
+}
+
+func WriteTo(w io.Writer, data []byte) {
+    _, err := w.Write(data)
+    // Handle err
+}
+```
+
+### The Stringer Interface
+
+The Stringer interface provides a method to return the string representation of a type.
+
+```go
+type Stringer interface {
+    String() string
+}
+```
+
+Many Go functions, like fmt.Println(), use the Stringer interface implicitly, allowing types to define their printable representations.
+
+<Banner type="important">
+  Note: Mastering interfaces and methods in Go is crucial as they lay the
+  foundation for Go's type system. It allows for modular and maintainable code.
+  Ensure you practice and apply these concepts in real-world scenarios.
+</Banner>
