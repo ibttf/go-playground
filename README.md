@@ -69,8 +69,8 @@ bun run dev
 </div>
 
 1. [`Learn`] On the sidebar, there are a few modules. Start with the basics, which covers setup and installation, as well as how to instantiate variables, concurrency, and writing functions. Then, move on to the guides and tutorials section to start building real projects with Go.
-![Screenshot 2023-10-12 at 6 56 20 PM](https://github.com/ibttf/go-playground/assets/60560932/b93e3018-25c7-465e-b7ce-216ed89cee72)
 
+![Screenshot 2023-10-12 at 7 14 33 PM](https://github.com/ibttf/go-playground/assets/60560932/3ac6a180-facb-47fe-841e-e63a4eda0dee)
 
 
 
