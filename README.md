@@ -1,5 +1,5 @@
-# Bayborhood
-A website designed for people to be find the perfect neighborhood in San Francisco.
+# Go Playground
+Go Playground is meant to be a modern, user-friendly alternative to the Go Docs, allowing users to quickly and easily learn how to write and create programs in Golang.
 
 Deployed on: [[https://go-playground-ruddy.vercel.app/](https://go-playground-ruddy.vercel.app/)]
 
@@ -14,7 +14,8 @@ Deployed on: [[https://go-playground-ruddy.vercel.app/](https://go-playground-ru
 - [Room for Improvement](#room-for-improvement)
 
 ## General Information
-Go Playground is meant to be a modern, user-friendly alternative to the Go Docs, allowing users to quickly and easily learn how to write and create programs in Golang.
+
+Go Playground is built with Next, Typescript, and Golang with Fiber on the backend.
 
 ## GitHub Repo
 
