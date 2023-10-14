@@ -7,10 +7,12 @@ export default function Footer() {
         <div className="mb-4 md:mb-0">
           <div className="shrink-0 flex flex-col md:flex-row items-center">
             {/* Logo */}
-            {/* <Logo /> */}
+            <Logo />
             <div className="text-sm text-slate-500 ml-4">
-              I don't know what a copyright is.
-              <span className="md:hidden lg:inline">Some rights reserved.</span>
+              Still Not Sure What a Copyright Is
+              <span className="md:hidden lg:inline">
+                . Some Rights Reserved. I think.
+              </span>
             </div>
           </div>
         </div>
@@ -19,22 +21,7 @@ export default function Footer() {
           <li>
             <a
               className="flex justify-center items-center text-blue-500 hover:text-blue-600 transition duration-150 ease-in-out"
-              href="#0"
-              aria-label="Twitter"
-            >
-              <svg
-                className="w-8 h-8 fill-current"
-                viewBox="0 0 32 32"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              className="flex justify-center items-center text-blue-500 hover:text-blue-600 transition duration-150 ease-in-out"
-              href="#0"
+              href="https://github.com/ibttf"
               aria-label="Github"
             >
               <svg
@@ -49,8 +36,8 @@ export default function Footer() {
           <li>
             <a
               className="flex justify-center items-center text-blue-500 hover:text-blue-600 transition duration-150 ease-in-out"
-              href="#0"
-              aria-label="Telegram"
+              href="mailto:churle12@gmail.com?subject=Feeedback About Go Playground"
+              aria-label="Email"
             >
               <svg
                 className="w-8 h-8 fill-current"

@@ -1,6 +1,8 @@
 import Logo from "@/components/ui/logo";
 import ThemeToggle from "./theme-toggle";
 import Search from "./search";
+import { Button } from "../shadcn/button";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -24,12 +26,12 @@ export default function Header() {
             {/* Right side elements links */}
             <ul className="flex grow justify-end flex-wrap items-center">
               <li className="ml-4">
-                <a
-                  className="btn-sm inline-flex items-center text-slate-100 bg-blue-600 hover:bg-blue-700 shadow-sm"
-                  href="#0"
+                <Button
+                  variant="link"
+                  className="p-4 btn-sm inline-flex items-center text-slate-100 bg-blue-600 hover:bg-blue-700 shadow-sm"
                 >
-                  Support
-                </a>
+                  <Link href="/help/how-can-we-help">Support</Link>
+                </Button>
               </li>
               {/* Lights switch */}
               <li>

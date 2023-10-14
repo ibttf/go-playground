@@ -7,7 +7,6 @@ import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import SidebarLink from "./sidebar-link";
 import SidebarLinkGroup from "./sidebar-link-group";
-import SidebarLinkSubgroup from "./sidebar-link-subgroup";
 
 export default function SupportSidebar() {
   const sidebar = useRef<HTMLDivElement>(null);
@@ -77,15 +76,14 @@ export default function SupportSidebar() {
               <nav className="md:block">
                 <ul className="text-sm">
                   {/* 1st level */}
-                  <SidebarLinkGroup open={segments.includes("documentation")}>
+                  <SidebarLinkGroup open={segments.includes("basics")}>
                     {(handleClick, open) => {
                       return (
                         <>
                           <a
                             href="#0"
                             className={`relative flex items-center font-[650] text-slate-800 p-1 before:absolute before:inset-0 before:rounded before:bg-gradient-to-tr before:from-blue-400 before:to-purple-500 before:opacity-20 before:-z-10 before:pointer-events-none dark:text-slate-200 ${
-                              !segments.includes("documentation") &&
-                              "before:hidden"
+                              !segments.includes("basics") && "before:hidden"
                             }`}
                             onClick={(e) => {
                               e.preventDefault();
@@ -112,7 +110,7 @@ export default function SupportSidebar() {
                                 d="M19.888 7.804c.073.132.112.28.112.43v7.892c0 .31-.161.597-.426.758l-7.11 4.346c-.14.085-.3.13-.464.13v-8.736l7.888-4.82Z"
                               />
                             </svg>
-                            <span>Documentation</span>
+                            <span>Basics</span>
                           </a>
                           <ul
                             className={`mb-3 ml-4 pl-6 border-l border-slate-200 dark:border-slate-800 ${
@@ -120,8 +118,8 @@ export default function SupportSidebar() {
                             }`}
                           >
                             <li className="mt-3">
-                              <SidebarLink href="/documentation/fundamentals">
-                                Fundamentals
+                              <SidebarLink href="/basics/why-go">
+                                Why Go?
                               </SidebarLink>
                             </li>
                             <li className="mt-3">
@@ -129,7 +127,9 @@ export default function SupportSidebar() {
                                 className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
                                 href="#0"
                               >
-                                Methods and Parameters
+                                <SidebarLink href="/basics/basics-of-go">
+                                  Basics Of Go
+                                </SidebarLink>
                               </a>
                             </li>
                             <li className="mt-3">
@@ -137,10 +137,41 @@ export default function SupportSidebar() {
                                 className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
                                 href="#0"
                               >
-                                Merge Fields
+                                <SidebarLink href="/basics/advanced-basics">
+                                  Advanced Basics
+                                </SidebarLink>
                               </a>
                             </li>
-                            <SidebarLinkSubgroup
+                            <li className="mt-3">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
+                                <SidebarLink href="/basics/interfaces-and-methods">
+                                  Interfaces and Methods
+                                </SidebarLink>
+                              </a>
+                            </li>
+                            <li className="mt-3">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
+                                <SidebarLink href="/basics/concurrency">
+                                  Concurrency
+                                </SidebarLink>
+                              </a>
+                            </li>
+
+                            {/* <li className="mt-3">
+                              <a
+                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
+                                href="#0"
+                              >
+                                Merge Fields
+                              </a>
+                            </li> */}
+                            {/* <SidebarLinkSubgroup
                               title="Alternative Schemas"
                               open={segments.includes("alternative-scheme")}
                             >
@@ -181,31 +212,7 @@ export default function SupportSidebar() {
                                   Query string parameters
                                 </a>
                               </li>
-                            </SidebarLinkSubgroup>
-                            <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Account Exports
-                              </a>
-                            </li>
-                            <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Integrations
-                              </a>
-                            </li>
-                            <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Add a contact
-                              </a>
-                            </li>
+                            </SidebarLinkSubgroup> */}
                           </ul>
                         </>
                       );
@@ -254,41 +261,34 @@ export default function SupportSidebar() {
                             }`}
                           >
                             <li className="mt-3">
-                              <SidebarLink href="/guides/marketing-api-quick-start">
-                                Marketing API Quick Start
+                              <SidebarLink href="/guides/guides-and-tutorials">
+                                Home
                               </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Create an account
-                              </a>
+                              <SidebarLink href="/guides/cli">
+                                Building a CLI Application
+                              </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Generate your API key
-                              </a>
+                              <SidebarLink href="/guides/backend">
+                                Building a Backend
+                              </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Make your first API call
-                              </a>
+                              <SidebarLink href="/guides/database">
+                                Connecting to a Database
+                              </SidebarLink>
                             </li>
                             <li className="mt-3">
-                              <a
-                                className="flex items-center space-x-3 font-medium text-slate-800 dark:text-slate-200"
-                                href="#0"
-                              >
-                                Next steps
-                              </a>
+                              <SidebarLink href="/guides/microservices">
+                                Building a Microservice
+                              </SidebarLink>
+                            </li>
+                            <li className="mt-3">
+                              <SidebarLink href="/guides/best-practices">
+                                Optimizing Go Code
+                              </SidebarLink>
                             </li>
                           </ul>
                         </>

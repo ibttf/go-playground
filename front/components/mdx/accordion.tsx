@@ -1,23 +1,20 @@
-"use client";
-import { useState, useRef, useEffect } from "react";
+'use client'
+import { useState, useRef, useEffect } from 'react'
 
 interface PostAccordionProps {
-  title: string;
-  active?: boolean;
-  children: React.ReactNode;
+  title: string
+  active?: boolean
+  children: React.ReactNode
 }
 
-export default function PostAccordion({
-  title,
-  active = false,
-  ...props
-}: PostAccordionProps) {
-  const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
-  const accordion = useRef<HTMLDivElement>(null);
+export default function PostAccordion({ title, active = false, ...props }: PostAccordionProps) {
+
+  const [accordionOpen, setAccordionOpen] = useState<boolean>(false)
+  const accordion = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setAccordionOpen(active);
-  }, [accordion]);
+    setAccordionOpen(active)
+  }, [accordion])  
 
   return (
     <div className="mb-3 prose-p:m-0">
@@ -31,9 +28,7 @@ export default function PostAccordion({
       >
         <div className="shrink-0 mr-3">
           <svg
-            className={`fill-slate-400 dark:fill-slate-500 ${
-              accordionOpen && "rotate-90"
-            }`}
+            className={`fill-slate-400 dark:fill-slate-500 ${accordionOpen && 'rotate-90'}`}
             xmlns="http://www.w3.org/2000/svg"
             width="8"
             height="12"
@@ -43,9 +38,9 @@ export default function PostAccordion({
         </div>
         <span>{title}</span>
       </button>
-      <div className={`${!accordionOpen ? "hidden" : ""}`}>
+      <div className={`${!accordionOpen ? 'hidden' : ''}`}>
         <div className="pl-5 mt-2">{props.children}</div>
       </div>
     </div>
-  );
+  )
 }
