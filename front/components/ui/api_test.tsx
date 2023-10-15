@@ -13,6 +13,7 @@ const ApiTest: React.FC = () => {
           throw new Error("Network response was not ok");
         }
         const result = await response.json();
+        console.log(result);
         setData(result);
       } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
@@ -22,7 +23,9 @@ const ApiTest: React.FC = () => {
     fetchData();
   }, []);
 
-  return <div>{console.log(data)}</div>;
+  return <div></div>;
 };
 
 export default ApiTest;
+
+//https://go-playground-ae009.firebaseapp.com/__/auth/handler

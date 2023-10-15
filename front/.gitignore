@@ -37,3 +37,8 @@ next-env.d.ts
 
 # contentlayer
 .contentlayer
+
+
+/backend/.env
+/backend/configs/firebase_service_account.json
+/front/.env.local

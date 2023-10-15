@@ -4,6 +4,9 @@ import { Nothing_You_Could_Do } from "next/font/google";
 import localFont from "next/font/local";
 import Theme from "./theme-provider";
 import AppProvider from "./app-provider";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import SessionProvider from "@/SessionProvider";
 
 const nycd = Nothing_You_Could_Do({
   subsets: ["latin"],
@@ -40,11 +43,12 @@ export const metadata = {
   description: "The best way to learn Go is to play with it.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
@@ -52,8 +56,7 @@ export default function RootLayout({
       >
         <Theme>
           <AppProvider>
-            {/*  Page content */}
-            {children}
+            <SessionProvider session={session}>{children}</SessionProvider>
           </AppProvider>
         </Theme>
       </body>

@@ -1,7 +1,9 @@
 import Logo from "@/components/ui/logo";
+import Auth from "./Auth";
 import ThemeToggle from "./theme-toggle";
 import Search from "./search";
 import { Button } from "../shadcn/button";
+
 import Link from "next/link";
 
 export default function Header() {
@@ -37,6 +39,7 @@ export default function Header() {
               <li>
                 <ThemeToggle />
               </li>
+              <Auth />
             </ul>
           </nav>
         </div>

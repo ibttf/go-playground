@@ -1,8 +1,8 @@
-"use client";
 import Logo from "@/components/ui/logo";
 import ThemeToggle from "./theme-toggle";
 import Search from "./search";
 import LandingHeaderDropdown from "./landing-header-dropdown";
+import Auth from "./Auth";
 
 export default function Header() {
   return (
@@ -18,6 +18,7 @@ export default function Header() {
             <div className="flex items-center">
               <Logo />
               <LandingHeaderDropdown />
+
               <Search />
             </div>
           </div>
@@ -30,6 +31,8 @@ export default function Header() {
               <li>
                 <ThemeToggle />
               </li>
+
+              <Auth />
             </ul>
           </nav>
         </div>
