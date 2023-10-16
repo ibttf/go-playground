@@ -13,7 +13,6 @@ const ApiTest: React.FC = () => {
           throw new Error("Network response was not ok");
         }
         const result = await response.json();
-        console.log(result);
         setData(result);
       } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
