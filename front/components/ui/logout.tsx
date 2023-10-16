@@ -1,7 +1,7 @@
 "use client";
 import { signOut } from "next-auth/react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { RxExit } from "react-icons/rx";
 
 export default function Login() {

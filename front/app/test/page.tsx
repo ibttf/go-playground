@@ -16,7 +16,6 @@ export default function Auth() {
       email: "john.doe@example.com",
       location: "atlanta",
       title: "president",
-      // ... other user data fields
     };
     try {
       const response = await fetch("http://localhost:8080/user", {
