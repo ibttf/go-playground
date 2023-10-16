@@ -10,14 +10,6 @@ import (
 
 func main() {
 	e := echo.New()
-	
-
-	//run Database
-	configs.ConnectDB()
-    e.Logger.Fatal(e.Start(":8080"))
-
-    //routes
-    routes.UserRoute(e)
 
 	// Middleware
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
@@ -25,12 +17,15 @@ func main() {
 		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
 	}))
 
+	// Connect to the database
+	configs.ConnectDB()
+
+	// Define routes
+	routes.UserRoute(e)
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(200, &echo.Map{"data": "Hello from Echo & mongoDB"})
 	})
 
+	// Start the Echo server
 	e.Logger.Fatal(e.Start(":8080"))
 }
-
-// mongo user: roylee0912 pass: DbPQ5lCPIIPOBP2U
-//mongodb+srv://roylee0912:DbPQ5lCPIIPOBP2U@go-playground.fihatiw.mongodb.net/?retryWrites=true&w=majority
