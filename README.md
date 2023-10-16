@@ -1,4 +1,5 @@
 # Go Playground
+
 Go Playground is meant to be a modern, user-friendly alternative to the Go Docs, allowing users to quickly and easily learn how to write and create programs in Golang.
 
 Deployed on: [[https://go-playground-ruddy.vercel.app/](https://go-playground-ruddy.vercel.app/)]
@@ -24,12 +25,14 @@ Go Playground is built with Next, Typescript, and Golang with Fiber on the backe
 ## Technologies Used
 
 ### Tech Stack
+
 Next 13
 React
 Typescript
 Golang (Fiber)
 
 ### Styling
+
 Headless UI
 Radix UI
 Shadcn
@@ -49,7 +52,6 @@ don't already have them.
 $ git clone https://github.com/ibttf/go-playground
 ```
 
-
 ### Application Install
 
 When you're ready to start building your project, run:
@@ -62,6 +64,7 @@ bun run dev
 
 
 ```
+
 ## Usage
 
 <div style="width:400px ; height:400px">
@@ -72,13 +75,12 @@ bun run dev
 
 ![Screenshot 2023-10-12 at 7 14 33 PM](https://github.com/ibttf/go-playground/assets/60560932/3ac6a180-facb-47fe-841e-e63a4eda0dee)
 
-
-
 ## Project Status
 
 - Project is: _in progress_.
 
 ## Room for Improvement
-- Add login to save progress
+
 - Add a functional "completed or not" feature.
+- Connect user models with user gmails and have them be connected to every module. in every module, have a client side rendered component that grabs from the db and checks whether or not the module is completed. also add functionality to the are you finished with the module footer component.
 - Add real-time testing so users can practice writing Go code and get responses in real-time.
